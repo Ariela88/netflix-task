@@ -36,7 +36,14 @@ function render() {
         imageShow.src = show.imageUrl
         div.appendChild(imageShow)
 
-        div.appendChild(createElementWithString('span', show.isFinished));
+        const spacer = document.createElement('div');
+        div.appendChild(spacer)
+        spacer.classList.add('spacer')
+        div.appendChild(createElementWithString('span', show.isFinished ? 'Serie Conclusa' : 'In corso'));
+
+
+
+
         const positiveVoteButton = document.createElement('button');
         positiveVoteButton.innerText = '👍';
         positiveVoteButton.addEventListener('click', function () {
@@ -70,9 +77,9 @@ function render() {
         showsContainer.appendChild(div);
 
         const sortButton = document.getElementById('sortButton');
-        sortButton.addEventListener('click', function () {
-            sortByRating();
-        });
+        sortButton.addEventListener('click', sortByRating())
+
+            ;
     }
 
 
@@ -92,7 +99,7 @@ function createElementWithString(elementName, contentString) {
 
 function rate(id, isPositive) {
     let show = manager.getShowById(id);
-     show = 0
+    show = 0
     if (show) {
         if (isPositive) {
             show.upVotes++;
@@ -111,15 +118,15 @@ function calculateRating(upVotes, totalVotes) {
 }
 
 function sortByRating() {
-    
+
     manager.showsArray.sort((a, b) => b.rating - a.rating);
-    render();
+
 }
 
 function saveShow() {
 
 
-    
+
     let form = document.querySelector('form')
     let title = form.title.value
     let author = form.author.value
@@ -127,19 +134,13 @@ function saveShow() {
 
     if (title.trim() !== '') {
 
-    let show = new Show (title, author, creationDate)
+        let show = new Show(title, author, creationDate)
 
-    DBService.addNewShow(show)
-    manager.addShow(show)
-    input.value = '';
-    render()
+        DBService.addNewShow(show)
+        manager.addShow(show)
+        input.value = '';
+        render()
 
-    
 
-        
-
-        
-           
-        
-
-}}
+    }
+}

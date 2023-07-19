@@ -1,80 +1,129 @@
+button {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: 300;
+}
+
+
 
 body {
     background-color: black;
 }
 
 
-header{
+header {
 
-    background-color: rgb(229,9,20);
+    background-color: rgb(229, 9, 20);
     height: 150px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
 
 
 }
-h1{
+
+h1 {
     color: white;
     font-size: 100px;
     text-transform: uppercase;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    text-align: center;
+    text-align: left;
+    padding-left: 300px;
     margin: auto;
 }
-#main-container{
+
+#main-container {
     display: flex;
     align-items: self-end;
-    justify-content: space-evenly;
-    gap: 40px;
+    justify-content: flex-start;
+    gap: 30px;
     flex-wrap: wrap;
-    float: left;
-    
+    margin-top: 80px;
+
+    position: relative;
+    left: 300px;
+    width: 100%;
+
 }
 
-.card{
+.card {
     display: flex;
     flex-direction: column;
-   
-    border: 1px solid black;
-    width: 25%;
+    height: max-content;
+    border: 1px solid rgb(255, 255, 255);
+    width: 15%;
     color: beige;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
 }
 
-.card img{
+.card strong {
+    font-size: 30px;
+}
+
+
+
+.card strong,
+span {
+    text-align: center;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.card img {
     width: 100%;
 }
-.card button{
-    width: 100%;
-}
 
-#add-show-input{
-    display: block;
-  width: 20%;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  height: 800px;
-  position: fixed; 
-  top: 150px; 
-  left: 0;
-  background-color: #f1f1f1;
-    
-   
+.card button {
+    width: 70%;
+    align-self: center;
+    background-color: black;
+    color: white;
 
 }
 
-h3{
-    color:white;
+#add-show-input {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #000000;
+    z-index: 999;
+    padding: 20px;
+    box-sizing: border-box;
+    justify-content: center;
+
+
+
+}
+
+h3 {
+    color: rgb(233, 29, 5);
     font-size: 24px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     margin: 10px 0px;
 }
 
-form{
+form {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-   
+
+
+
 }
 
-label{
+
+#add-show-input button {
+    width: 70%;
+    align-self: center;
+    background-color: black;
+    color: white;
+    margin-top: 30px;
+
+}
+
+label {
     color: white;
     font-size: 16px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -82,3 +131,89 @@ label{
 
 }
 
+.spacer {
+    flex: 1;
+}
+
+@media (max-width: 500px){
+
+
+    /* body{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin: 0;
+        width: 100vw;
+    } */
+header{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+    position: none;
+    align-items: center;
+    justify-content: center;
+   
+}
+
+h1{
+    margin: 0px;
+    padding: 0;
+    position: unset;
+    font-size: 60px;
+    text-align: center;
+    align-self: center;
+    
+    width: 100%;
+}
+
+#add-show-input{
+    position: unset;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+}
+
+#add-show-input button{
+    margin: auto;
+    justify-self: center;
+    margin-top: 10px;
+}
+
+
+.card{
+    width: 100%;
+    height: auto;
+    margin: 0;
+}
+
+#main-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    flex-wrap: wrap;
+    margin-top: 100px;
+
+    position: unset;
+    left: 0;
+    width: 100%;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
