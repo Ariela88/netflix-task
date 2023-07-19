@@ -118,17 +118,28 @@ function sortByRating() {
 
 function saveShow() {
 
+
+    
     let form = document.querySelector('form')
     let title = form.title.value
     let author = form.author.value
     let creationDate = new Date()
 
+    if (title.trim() !== '') {
 
-
-    let show = new Show(title, author, creationDate)
+    let show = new Show (title, author, creationDate)
 
     DBService.addNewShow(show)
     manager.addShow(show)
+    input.value = '';
     render()
 
-}
+    
+
+        
+
+        
+           
+        
+
+}}

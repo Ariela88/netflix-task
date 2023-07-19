@@ -3,20 +3,30 @@ body {
     background-color: black;
 }
 
+
+header{
+
+    background-color: rgb(229,9,20);
+    height: 150px;
+
+
+}
 h1{
-    color: rgb(229,9,20);
+    color: white;
     font-size: 100px;
     text-transform: uppercase;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     text-align: center;
     margin: auto;
 }
 #main-container{
     display: flex;
-    align-items: flex-start;
+    align-items: self-end;
     justify-content: space-evenly;
     gap: 40px;
     flex-wrap: wrap;
+    float: left;
+    
 }
 
 .card{
@@ -36,14 +46,25 @@ h1{
 }
 
 #add-show-input{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    width: 20%;
-    margin-bottom: 30px;
-    margin-top: 30px;
-    gap: 30px;
+    display: block;
+  width: 20%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  height: 800px;
+  position: fixed; 
+  top: 150px; 
+  left: 0;
+  background-color: #f1f1f1;
+    
+   
 
+}
+
+h3{
+    color:white;
+    font-size: 24px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin: 10px 0px;
 }
 
 form{
@@ -51,5 +72,13 @@ form{
     flex-direction: column;
     flex-wrap: wrap;
    
+}
+
+label{
+    color: white;
+    font-size: 16px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin: 10px 0px;
+
 }
 

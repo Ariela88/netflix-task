@@ -39,4 +39,20 @@ class DBService{
             const deleteUrl = DBService.BASE_URL + '/NetflixFilm/' + id;
             return fetch(deleteUrl, { method: 'delete' }).then(resp => resp.json());
           }
+
+          static saveShow(show) {
+            const url  = DBService.BASE_URL + '/NetflixFilm'
+            return fetch(postUrl, {
+                method: 'post',
+                body: JSON.stringify(show),
+                headers: {
+                    'content-type': 'application/json'
+                }
+            })
+                .then(resp => resp.json())
+                .then(res => this.convertToShows(res))
+    
+    
+        }
+    
 }
