@@ -1,5 +1,3 @@
-// let manager = new Manager(DBService.getAllShows());
-
 
 let manager;
 
@@ -8,7 +6,7 @@ DBService.getAllShows().then(shows => {
     render();
 });
 
-// console.log(manager);
+
 
 
 
@@ -27,7 +25,7 @@ function render() {
         const div = document.createElement('div');
         div.classList.add('card');
 
-        console.log(show.title);
+        ;
 
         div.appendChild(createElementWithString('strong', show.title));
         div.appendChild(createElementWithString('span', show.creationDate));
@@ -40,24 +38,40 @@ function render() {
 
         div.appendChild(createElementWithString('span', show.isFinished));
         const positiveVoteButton = document.createElement('button');
-        positiveVoteButton.innerText = 'Voto positivo';
+        positiveVoteButton.innerText = '👍';
         positiveVoteButton.addEventListener('click', function () {
             rate(show.id, true);
         });
         div.appendChild(positiveVoteButton);
 
+
         const negativeVoteButton = document.createElement('button');
-        negativeVoteButton.innerText = 'Voto negativo';
+        negativeVoteButton.innerText = '👎';
         negativeVoteButton.addEventListener('click', function () {
             rate(show.id, false);
         });
+        negativeVoteButton.classList.add('rate-down-btn')
+        positiveVoteButton.classList.add('rate-up-btn')
+
         div.appendChild(negativeVoteButton);
+        const deleteBtn = document.createElement('button')
+        const deleteNodeBtn = document.createTextNode('Elimina')
+        deleteBtn.appendChild(deleteNodeBtn)
+        div.appendChild(deleteBtn)
+
+        deleteBtn.addEventListener('click', () => {
+            DBService.deleteShow(show.id).then(() => {
+                manager.deleteShow(i);
+                render(show)
+
+            })
+        })
 
         showsContainer.appendChild(div);
 
         const sortButton = document.getElementById('sortButton');
-        sortButton.addEventListener('click', function() {
-          sortByRating();
+        sortButton.addEventListener('click', function () {
+            sortByRating();
         });
     }
 
@@ -77,7 +91,8 @@ function createElementWithString(elementName, contentString) {
 
 
 function rate(id, isPositive) {
-    const show = manager.getShowById(id);
+    let show = manager.getShowById(id);
+     show = 0
     if (show) {
         if (isPositive) {
             show.upVotes++;
@@ -93,26 +108,27 @@ function rate(id, isPositive) {
 
 function calculateRating(upVotes, totalVotes) {
     return upVotes / totalVotes;
-  }
+}
 
-  function sortByRating() {
+function sortByRating() {
+    
     manager.showsArray.sort((a, b) => b.rating - a.rating);
     render();
-  }
+}
 
 function saveShow() {
 
     let form = document.querySelector('form')
-  let title = form.title.value
-  let author = form.author.value
-  let creationDate = new Date()
-  
-  console.log(title)
-  
+    let title = form.title.value
+    let author = form.author.value
+    let creationDate = new Date()
+
+
+
     let show = new Show(title, author, creationDate)
-   
-  DBService.addNewShow(show)
-  manager.addShow(show)
-  render()
-    
-  }
+
+    DBService.addNewShow(show)
+    manager.addShow(show)
+    render()
+
+}

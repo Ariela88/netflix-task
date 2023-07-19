@@ -33,4 +33,10 @@ class DBService{
         fetch(url, {method: 'POST', headers: {'content-type': 'application/json'},body: JSON.stringify(show)}).then(resp => {if (resp.ok){
           return resp.json()
         }})
-}}
+}
+        static deleteShow(id) {
+      
+            const deleteUrl = DBService.BASE_URL + '/NetflixFilm/' + id;
+            return fetch(deleteUrl, { method: 'delete' }).then(resp => resp.json());
+          }
+}

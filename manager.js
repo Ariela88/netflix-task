@@ -12,6 +12,10 @@ class Manager{
         return this.showsArray.find(show => show.id === id);
       }
 
+      deleteShow(index) {
+        this.showsArray.splice(index, 1);
+      }
+
       
 
 
