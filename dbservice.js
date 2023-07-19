@@ -1,10 +1,10 @@
 class DBService{
 
 
-    static BASE_URL = "https://64b512c5f3dbab5a95c6a4c2.mockapi.io"
+    static BASE_URL = "https://64b512caf3dbab5a95c6a515.mockapi.io"
 
     static getAllShows(){
-        const url =  DBService.BASE_URL+'/shows';
+        const url =  DBService.BASE_URL+'/NetflixFilm';
         return fetch(url)
               .then(resp => resp.json())
               .then(result => this.convertToShowsArray(result))
@@ -26,5 +26,11 @@ class DBService{
 
         return tempArray;
     }
+    static addNewShow(show){
 
-}
+        const url = DBService.BASE_URL + '/NetflixFilm';
+  
+        fetch(url, {method: 'POST', headers: {'content-type': 'application/json'},body: JSON.stringify(show)}).then(resp => {if (resp.ok){
+          return resp.json()
+        }})
+}}

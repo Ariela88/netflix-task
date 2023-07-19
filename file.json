@@ -8,6 +8,18 @@
      "upVotes": 0,
      "downVotes": 0
     }    
+
+   
+,
+    {
+        "title": "Big Bang Theory",
+        "creationDate": "2007",
+        "author": " Chuck Lorre ",
+        "imageUrl": "https://pad.mymovies.it/filmclub/2009/06/113/locandina.jpg",
+        "isFinished":true,
+        "upVotes": 0,
+        "downVotes": 0
+       } 
 ]
 
 

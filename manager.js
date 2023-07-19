@@ -7,4 +7,13 @@ class Manager{
     addShow(show){
         this.showsArray.push(show);
     }
+
+    getShowById(id) {
+        return this.showsArray.find(show => show.id === id);
+      }
+
+      
+
+
+        
 }

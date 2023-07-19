@@ -5,15 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
 
     <header><h1>Netflix Shows</h1></header>
+
+    <div  id="add-show-input">
+        <form name ="addShow">
+            <label for="title"> Titolo </label><input name="title" type="text">
+            <label for="author"> Autore </label><input name="author"type="text">
+            <label for="creationDate"> Anno di Uscita </label><input name="dop"type="number">
+            
+         
+        </form>
+        <button onclick="saveShow()"> inserisci </button>
+    </div>
+
+    <button id="sortButton">Ordina per votazione</button>
+
     <main id="main-container">
 
 
     </main>
+ 
 
 
 
