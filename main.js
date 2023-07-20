@@ -1,15 +1,28 @@
 
+
+
 let manager;
 
 DBService.getAllShows().then(shows => {
     manager = new Manager(shows);
     render();
+    console.log(shows)
 });
 
 
+show1 = {
+    "title": "Breaking Bad",
+    "creationDate": "2022-09-13T02:53:50.807Z",
+    "author": "Vince Villigan",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShkU5g5OK8nD-I1yRRUq0RjZSOlbHLrW9woj3E-Nnk_MuAC6aT",
+    "isFinished": false,
+    "upVotes": 0,
+    "downVotes": 0,
+    "id": "0"
+   }
 
-
-
+   show1.upVotes++
+   console.log(show1)
 
 
 
@@ -25,7 +38,7 @@ function render() {
         const div = document.createElement('div');
         div.classList.add('card');
 
-        ;
+
 
         div.appendChild(createElementWithString('strong', show.title));
         div.appendChild(createElementWithString('span', show.creationDate));
@@ -37,30 +50,33 @@ function render() {
         div.appendChild(imageShow)
 
         const spacer = document.createElement('div');
+
         div.appendChild(spacer)
         spacer.classList.add('spacer')
+
         div.appendChild(createElementWithString('span', show.isFinished ? 'Serie Conclusa' : 'In corso'));
-
-
 
 
         const positiveVoteButton = document.createElement('button');
         positiveVoteButton.innerText = '👍';
-        positiveVoteButton.addEventListener('click', function () {
-            rate(show.id, true);
+        positiveVoteButton.addEventListener('click', function(){
+            show.upVotes++
         });
         div.appendChild(positiveVoteButton);
 
 
         const negativeVoteButton = document.createElement('button');
         negativeVoteButton.innerText = '👎';
-        negativeVoteButton.addEventListener('click', function () {
-            rate(show.id, false);
-        });
+        negativeVoteButton.addEventListener('click', DBService.upvote(show))
+        
+                                          
+
+
         negativeVoteButton.classList.add('rate-down-btn')
         positiveVoteButton.classList.add('rate-up-btn')
 
         div.appendChild(negativeVoteButton);
+
         const deleteBtn = document.createElement('button')
         const deleteNodeBtn = document.createTextNode('Elimina')
         deleteBtn.appendChild(deleteNodeBtn)
@@ -74,15 +90,15 @@ function render() {
             })
         })
 
+
         showsContainer.appendChild(div);
 
         const sortButton = document.getElementById('sortButton');
-        sortButton.addEventListener('click', sortByRating())
+        sortButton.addEventListener('click', function () {
 
-            ;
+
+        })
     }
-
-
 }
 
 

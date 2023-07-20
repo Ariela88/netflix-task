@@ -36,6 +36,23 @@ class DBService {
             }
         })
     }
+
+
+    static updateShow(show) {
+
+        const url = DBService.BASE_URL + '/NetflixFilm/' + show.id;
+
+        fetch(url, {
+            method: 'put',
+            body: JSON.stringify(show),
+            headers: { 'content-type': 'application/json' }
+        }).then(resp => resp.json())
+
+    }
+
+
+
+
     static deleteShow(id) {
 
         const deleteUrl = DBService.BASE_URL + '/NetflixFilm/' + id;
@@ -44,7 +61,7 @@ class DBService {
 
     static saveShow(show) {
         const url = DBService.BASE_URL + '/NetflixFilm'
-        return fetch(postUrl, {
+        return fetch(url, {
             method: 'post',
             body: JSON.stringify(show),
             headers: {
@@ -55,6 +72,13 @@ class DBService {
             .then(res => this.convertToShows(res))
 
 
+    }
+
+
+    static upvote(show){
+
+    show.upVotes++
+    return this.updateShow(show)
     }
 
 }
